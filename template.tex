@@ -54,14 +54,12 @@
      \includegraphics[width=\logosize]{logo_cai_juniores.png}
    };
   
-% Segnale CAI in basso a destra con titolo e data
-\node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
-  \begin{tikzpicture}[inner sep=0pt]
-    % ruota tutto il gruppo di -10°
-    \begin{scope}[rotate=-10, transform shape]
+  % Segnale CAI in basso a destra con titolo e data
+  \node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
+    \begin{tikzpicture}
       % Immagine del segnale CAI
-      \node[anchor=center, inner sep=0pt] at (0,0) {
-        \includegraphics[width=\signsize]{cai_sign.png}
+      \node[anchor=center,rotate=-10, inner sep=0pt] at (0,0) {
+        \includegraphics[angle=-10, width=\signsize]{cai_sign.png}
       };
       % Testo sovrapposto al segnale
       \node[anchor=center] at (0,-0.15cm) {
@@ -71,9 +69,9 @@
           \footnotesize\textbf{05/10}
         \end{minipage}
       };
-    \end{scope}
-  \end{tikzpicture}
-};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
   
 \vspace{0.5cm}
 
