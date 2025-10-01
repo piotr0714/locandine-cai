@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{lmodern}
+\usepackage{float}
+
+% Per link a colori, sottolineati, ecc.
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=blue]{hyperref}
+
+% Pacchetti utili per logica condizionale
+\usepackage{ifthen}
+
+\definecolor{celeste}{HTML}{AEC6CF}
+\definecolor{arancione}{HTML}{FFD699}
+\definecolor{rowgray}{gray}{0.9}
+
+\geometry{
+  left=1.5cm,
+  right=1.5cm,
+  top=1.5cm,
+  bottom=1.5cm,
+  paperwidth=21cm,
+  paperheight=29.7cm
+}
+
+% ===================
+%  MACRO PER FORMATTARE LE DATE (ISO -> italiano)
+% ===================
+\makeatletter
+% \myparseISO "spacchetta" la stringa YYYY-MM-DD in \anno, \mese, \giorno
+\def\myparseISO#1-#2-#3\relax{%
+  \def\anno{#1}%
+  \def\mese{#2}%
+  \def\giorno{#3}%
+}
+
+% \formatISO{YYYY-MM-DD} -> "DD mmm. YYYY"
+\newcommand{\formatISO}[1]{%
+  % Se la stringa è vuota, non stampare nulla
+  \ifthenelse{\equal{#1}{}}{}{%
+    \expandafter\myparseISO#1\relax
+    % Mappa mese numerico -> abbreviazione italiana
+    \def\myMese{}%
+    \ifthenelse{\equal{\mese}{01}}{\def\myMese{gen.}}{}%
+    \ifthenelse{\equal{\mese}{02}}{\def\myMese{feb.}}{}%
+    \ifthenelse{\equal{\mese}{03}}{\def\myMese{mar.}}{}%
+    \ifthenelse{\equal{\mese}{04}}{\def\myMese{apr.}}{}%
+    \ifthenelse{\equal{\mese}{05}}{\def\myMese{mag.}}{}%
+    \ifthenelse{\equal{\mese}{06}}{\def\myMese{giu.}}{}%
+    \ifthenelse{\equal{\mese}{07}}{\def\myMese{lug.}}{}%
+    \ifthenelse{\equal{\mese}{08}}{\def\myMese{ago.}}{}%
+    \ifthenelse{\equal{\mese}{09}}{\def\myMese{set.}}{}%
+    \ifthenelse{\equal{\mese}{10}}{\def\myMese{ott.}}{}%
+    \ifthenelse{\equal{\mese}{11}}{\def\myMese{nov.}}{}%
+    \ifthenelse{\equal{\mese}{12}}{\def\myMese{dic.}}{}%
+    \giorno\space \myMese\space \anno
+  }%
+}
+\makeatother
+% ===================
+
+\begin{document}
+\pagestyle{empty}  % Rimuove la numerazione di pagina
+
+% 1) Immagine principale, centrata al 90% della larghezza
+\begin{center}
+  \resizebox{0.9\textwidth}{!}{%%LOCANDINA_IMAGE%%}
+\end{center}
+
+% 2) Blocco APPUNTAMENTO / MEZZO DI TRASPORTO,
+%    allineato a sinistra ma con la stessa indentazione delle tabelle
+%    Ora include la data \formatISO{{{dataVal}}}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\raggedright
+\colorbox{celeste}{\textbf{\uppercase{APPUNTAMENTO:}}} ~ \formatISO{{{dataVal}}} \, {{luogo}} \, {{orario}} \\
+\colorbox{celeste}{\textbf{\uppercase{MEZZO DI TRASPORTO:}}} ~ {{mezzi}}
+\end{minipage}
+\end{center}
+
+% 3) Tabella PROGRAMMA, centrata al 90%, riga celeste senza \\[0.5em]
+\begin{table}[H]
+\centering
+\resizebox{0.9\textwidth}{!}{%
+\begin{tabular}{|p{4.5cm}|p{11cm}|}
+\hline
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{\uppercase{PROGRAMMA:}} \quad {{titolo}}} \\
+\hline
+\textbf{Descrizione:} & {{descr}} \\
+\hline
+\textbf{Dislivello Totale:} & {{dislivello}} \\
+\hline
+\textbf{Distanza Totale:} & {{distanza}} \\
+\hline
+\textbf{Difficoltà:} & {{difficolta}} \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+% 4) Tabella ACCOMPAGNATORI, centrata al 90%, con cella sinistra unica
+% 4) Tabella ACCOMPAGNATORI, centrata al 90%
+\begin{table}[H]
+\centering
+\resizebox{0.9\textwidth}{!}{%
+\begin{tabular}{|>{\columncolor{celeste}}p{4.5cm}|p{11cm}|}
+\hline
+\textbf{Accompagnatori:} & \cellcolor{arancione}{{a1}} \\ \hline
+ & {{others}} \\ \hline
+\end{tabular}
+}
+\end{table}
+
+% 5) Blocco finale (PORTARE / COSTO / ISCRIZIONE), su righe separate
+%    Convertiamo le date di inizio/fine iscrizione con \formatISO
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\raggedright
+\colorbox{celeste}{\textbf{\uppercase{PORTARE:}}} ~
+\href{https://www.cairoma.it/?page_id=22206#:~:text=LISTA%20BASE%3A,e%C2%A0un%20pasto}{\textbf{\underline{\textcolor{blue}{LISTA BASE}}}}%
+\ + {{mat}} \\
+\colorbox{celeste}{\textbf{\uppercase{COSTO:}}} ~ {{quota}}\euro \,da pagare direttamente il giorno dell'escursione \\
+\colorbox{celeste}{\textbf{\uppercase{ISCRIZIONE:}}} ~
+È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.\\
+Iscrizione fino a esaurimento posti: via
+\href{{{formLink}}}{\textbf{\textcolor{blue}{\underline{form}}}}
+dall'\formatISO{{{dataIni}}} alle {{oraIni}} al \formatISO{{{dataFin}}} alle {{oraFin}}.
+\end{minipage}
+\end{center}
+
+\end{document}

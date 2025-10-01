@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{lmodern}
+\definecolor{celeste}{HTML}{AEC6CF}
+\definecolor{arancione}{HTML}{FFD699}
+\definecolor{rowgray}{gray}{0.9}
+
+\geometry{
+  left=1.5cm,
+  right=1.5cm,
+  top=1.5cm,
+  bottom=1.5cm,
+  paperwidth=21cm,
+  paperheight=29.7cm
+}
+
+\begin{document}
+
+\begin{center}
+%%LOCANDINA_IMAGE%%
+\end{center}
+
+\vspace{1em}
+\begin{center}
+  {\huge \bfseries {{titolo}}} \\[0.5em]
+  {\large {{dataVal}}}
+\end{center}
+
+\vspace{1em}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\rowcolor{rowgray}\textbf{Orario Partenza} & {{orario}} \\ \hline
+\textbf{Luogo Partenza} & {{luogo}} \\ \hline
+\textbf{Mezzi Trasporto} & {{mezzi}} \\ \hline
+\textbf{Quota} & {{quota}} \euro \\ \hline
+\textbf{Dislivello} & {{dislivello}} \\ \hline
+\textbf{Distanza} & {{distanza}} \\ \hline
+\textbf{Difficoltà} & {{difficolta}} \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+\section*{Descrizione Escursione}
+{{descr}}
+
+\section*{Materiale Necessario}
+{{mat}}
+
+% Tabella Accompagnatori
+\begin{table}[ht]
+\centering
+\noindent
+\begin{tabular}{|>{\columncolor{celeste}}p{4cm}|p{8cm}|}
+\hline
+\textbf{Accompagnatori:} & \cellcolor{arancione}{{a1}} \\ \hline
+ & {{others}} \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{ISCRIZIONE}
+È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera. \\
+Iscrizione fino a esaurimento posti: via \href{{{formLink}}}{form} 
+dall'{{dataIni}} alle {{oraIni}} al {{dataFin}} alle {{oraFin}}.
+
+\end{document}
