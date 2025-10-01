@@ -1,4 +1,4 @@
-\documentclass[14pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
@@ -54,12 +54,14 @@
      \includegraphics[width=\logosize]{logo_cai_juniores.png}
    };
   
-  % Segnale CAI in basso a destra con titolo e data
-  \node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
-    \begin{tikzpicture}
+% Segnale CAI in basso a destra con titolo e data
+\node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
+  \begin{tikzpicture}[inner sep=0pt]
+    % ruota tutto il gruppo di -10°
+    \begin{scope}[rotate=-10, transform shape]
       % Immagine del segnale CAI
       \node[anchor=center, inner sep=0pt] at (0,0) {
-        \includegraphics[angle=-10, width=\signsize]{cai_sign.png}
+        \includegraphics[width=\signsize]{cai_sign.png}
       };
       % Testo sovrapposto al segnale
       \node[anchor=center] at (0,-0.15cm) {
@@ -69,10 +71,10 @@
           \footnotesize\textbf{05/10}
         \end{minipage}
       };
-    \end{tikzpicture}
-  };
-\end{tikzpicture}
-
+    \end{scope}
+  \end{tikzpicture}
+};
+  
 \vspace{0.5cm}
 
 % APPUNTAMENTO e MEZZO DI TRASPORTO su due righe
