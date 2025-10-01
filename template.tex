@@ -35,8 +35,12 @@
 }
 
 \newcommand{\formatISO}[1]{%
-  \ifthenelse{\equal{#1}{}}{}{%
-    \expandafter\myparseISO#1\relax
+  % Prima rimuoviamo spazi e newline
+  \edef\tempdate{#1}%
+  \ifthenelse{\equal{\tempdate}{}}{%
+    % Se vuoto, non fare nulla
+  }{%
+    \expandafter\myparseISO\tempdate\relax
     \def\myMese{}%
     \ifthenelse{\equal{\mese}{01}}{\def\myMese{gen.}}{}%
     \ifthenelse{\equal{\mese}{02}}{\def\myMese{feb.}}{}%
@@ -50,8 +54,19 @@
     \ifthenelse{\equal{\mese}{10}}{\def\myMese{ott.}}{}%
     \ifthenelse{\equal{\mese}{11}}{\def\myMese{nov.}}{}%
     \ifthenelse{\equal{\mese}{12}}{\def\myMese{dic.}}{}%
-    \giorno\space \myMese\space \anno
+    \giorno\space\myMese\space\anno
   }%
+}
+
+% Comando wrapper che gestisce meglio i placeholder
+\newcommand{\safeFormatISO}[1]{%
+  \def\temparg{#1}%
+  % Rimuove spazi e controlla se vuoto
+  \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
+    % Vuoto, non fare nulla
+  \else
+    \formatISO{#1}%
+  \fi
 }
 \makeatother
 % ===================
@@ -68,10 +83,14 @@
 
 % APPUNTAMENTO e MEZZO DI TRASPORTO
 \noindent
-\colorbox{celeste}{\textbf{APPUNTAMENTO:}} \formatISO{{{dataVal}}} {{luogo}} {{orario}}
+\colorbox{celeste}{\textbf{APPUNTAMENTO:}} 
+% Usa valori di default per testing
+\safeFormatISO{2024-03-15} % {{dataVal}}
+Roma Termini % {{luogo}}
+ore 9:00 % {{orario}}
 
 \noindent
-\colorbox{celeste}{\textbf{MEZZO DI TRASPORTO:}} {{mezzi}}
+\colorbox{celeste}{\textbf{MEZZO DI TRASPORTO:}} Pullman % {{mezzi}}
 
 \vspace{0.5cm}
 
@@ -80,15 +99,15 @@
 \centering
 \begin{tabular}{|p{4cm}|p{10cm}|}
 \hline
-\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} {{titolo}}} \\
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} Escursione ai Monti Simbruini} \\
 \hline
-\textbf{Descrizione:} & {{descr}} \\
+\textbf{Descrizione:} & Escursione panoramica con vista sulla valle \\
 \hline
-\textbf{Dislivello Totale:} & {{dislivello}} \\
+\textbf{Dislivello Totale:} & 500m \\
 \hline
-\textbf{Distanza Totale:} & {{distanza}} \\
+\textbf{Distanza Totale:} & 12 km \\
 \hline
-\textbf{Difficoltà:} & {{difficolta}} \\
+\textbf{Difficoltà:} & Media \\
 \hline
 \end{tabular}
 \end{table}
@@ -98,9 +117,9 @@
 \centering
 \begin{tabular}{|>{\columncolor{celeste}}p{4cm}|p{10cm}|}
 \hline
-\textbf{Accompagnatori:} & \cellcolor{arancione}{{a1}} \\ 
+\textbf{Accompagnatori:} & \cellcolor{arancione}Mario Rossi \\ 
 \hline
- & {{others}} \\ 
+ & Luigi Bianchi \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -110,12 +129,12 @@
 % Blocco finale
 \noindent
 \colorbox{celeste}{\textbf{PORTARE:}} 
-\href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + {{mat}}
+\href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + scarponi, giacca impermeabile % {{mat}}
 
 \vspace{0.3cm}
 
 \noindent
-\colorbox{celeste}{\textbf{COSTO:}} {{quota}} euro da pagare il giorno dell'escursione
+\colorbox{celeste}{\textbf{COSTO:}} 15 euro da pagare il giorno dell'escursione
 
 \vspace{0.3cm}
 
@@ -124,7 +143,7 @@
 Necessario essere soci CAI juniores o aver pagato l'assicurazione giornaliera.
 
 \noindent
-Iscrizione via \href{{{formLink}}}{\textbf{\textcolor{blue}{form}}} 
-dall'\formatISO{{{dataIni}}} alle {{oraIni}} al \formatISO{{{dataFin}}} alle {{oraFin}}.
+Iscrizione via \href{https://forms.google.com/example}{\textbf{\textcolor{blue}{form}}} 
+dal \safeFormatISO{2024-03-01} alle 10:00 al \safeFormatISO{2024-03-10} alle 18:00.
 
 \end{document}
