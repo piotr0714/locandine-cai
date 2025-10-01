@@ -69,14 +69,17 @@
 \begin{document}
 \pagestyle{empty}  % Rimuove la numerazione di pagina
 
-% 1) Immagine principale, centrata al 90% della larghezza
+% 1) Immagine principale - COMMENTATA perché manca il file immagine
+% Per inserire un'immagine vera, usa:
+% \begin{center}
+%   \includegraphics[width=0.9\textwidth]{nome_file_immagine.jpg}
+% \end{center}
+
 \begin{center}
-  \resizebox{0.9\textwidth}{!}{%%LOCANDINA_IMAGE%%}
+\textit{[Qui andrà la locandina]}
 \end{center}
 
-% 2) Blocco APPUNTAMENTO / MEZZO DI TRASPORTO,
-%    allineato a sinistra ma con la stessa indentazione delle tabelle
-%    Ora include la data \formatISO{{{dataVal}}}
+% 2) Blocco APPUNTAMENTO / MEZZO DI TRASPORTO
 \begin{center}
 \begin{minipage}{0.9\textwidth}
 \raggedright
@@ -85,7 +88,7 @@
 \end{minipage}
 \end{center}
 
-% 3) Tabella PROGRAMMA, centrata al 90%, riga celeste senza \\[0.5em]
+% 3) Tabella PROGRAMMA
 \begin{table}[H]
 \centering
 \resizebox{0.9\textwidth}{!}{%
@@ -105,8 +108,7 @@
 }
 \end{table}
 
-% 4) Tabella ACCOMPAGNATORI, centrata al 90%, con cella sinistra unica
-% 4) Tabella ACCOMPAGNATORI, centrata al 90%
+% 4) Tabella ACCOMPAGNATORI
 \begin{table}[H]
 \centering
 \resizebox{0.9\textwidth}{!}{%
@@ -118,8 +120,7 @@
 }
 \end{table}
 
-% 5) Blocco finale (PORTARE / COSTO / ISCRIZIONE), su righe separate
-%    Convertiamo le date di inizio/fine iscrizione con \formatISO
+% 5) Blocco finale (PORTARE / COSTO / ISCRIZIONE)
 \begin{center}
 \begin{minipage}{0.9\textwidth}
 \raggedright
