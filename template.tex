@@ -5,6 +5,9 @@
 \usepackage{geometry}
 \usepackage[table]{xcolor}
 \usepackage{float}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{adjustbox}
 
 % Per link a colori
 \usepackage[colorlinks=true,
@@ -14,14 +17,16 @@
 % Pacchetti per logica condizionale
 \usepackage{ifthen}
 
+% Definizione colori come nel PDF originale
 \definecolor{celeste}{HTML}{AEC6CF}
 \definecolor{arancione}{HTML}{FFD699}
+\definecolor{grigiochiaro}{HTML}{E8E8E8}
 
 \geometry{
-  left=2cm,
-  right=2cm,
-  top=2cm,
-  bottom=2cm
+  left=1.5cm,
+  right=1.5cm,
+  top=1.5cm,
+  bottom=1.5cm
 }
 
 % ===================
@@ -35,7 +40,6 @@
 }
 
 \newcommand{\formatISO}[1]{%
-  % Prima rimuoviamo spazi e newline
   \edef\tempdate{#1}%
   \ifthenelse{\equal{\tempdate}{}}{%
     % Se vuoto, non fare nulla
@@ -57,93 +61,99 @@
     \giorno\space\myMese\space\anno
   }%
 }
-
-% Comando wrapper che gestisce meglio i placeholder
-\newcommand{\safeFormatISO}[1]{%
-  \def\temparg{#1}%
-  % Rimuove spazi e controlla se vuoto
-  \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
-    % Vuoto, non fare nulla
-  \else
-    \formatISO{#1}%
-  \fi
-}
 \makeatother
 % ===================
 
 \begin{document}
 \pagestyle{empty}
 
-% Spazio per immagine
-\begin{center}
-\vspace{2cm}
-\textit{[Spazio per la locandina]}
-\vspace{2cm}
-\end{center}
-
-% APPUNTAMENTO e MEZZO DI TRASPORTO
+% Box con immagine e logo
 \noindent
-\colorbox{celeste}{\textbf{APPUNTAMENTO:}} 
-% Usa valori di default per testing
-\safeFormatISO{2024-03-15} % {{dataVal}}
-Roma Termini % {{luogo}}
-ore 9:00 % {{orario}}
+\begin{tikzpicture}[remember picture, overlay]
+    % Immagine di sfondo (Gole di Celano)
+    \node[anchor=north, inner sep=0pt] at ([yshift=-0.5cm]current page.north) {
+        \includegraphics[width=\textwidth, height=8cm, keepaspectratio=false]{example-image}
+    };
+    
+    % Logo CAI in alto a sinistra
+    \node[anchor=north west, inner sep=0pt] at ([xshift=1cm, yshift=-1cm]current page.north west) {
+        \includegraphics[width=3cm]{example-image-a}
+    };
+    
+    % Box bianco con titolo in basso a destra dell'immagine
+    \node[anchor=south east, fill=white, inner sep=8pt] at ([xshift=-1cm, yshift=0.5cm]current page.north east |- 0,-7.5) {
+        \begin{minipage}{6cm}
+            \raggedleft
+            \Large\bfseries Gole di Celano\\
+            \normalsize 05/10
+        \end{minipage}
+    };
+\end{tikzpicture}
 
+\vspace{8.5cm}
+
+% APPUNTAMENTO e MEZZO DI TRASPORTO con sfondo grigio
 \noindent
-\colorbox{celeste}{\textbf{MEZZO DI TRASPORTO:}} Pullman % {{mezzi}}
+\colorbox{grigiochiaro}{%
+\begin{minipage}{\dimexpr\textwidth-2\fboxsep\relax}
+\vspace{0.2cm}
+\noindent
+\textbf{APPUNTAMENTO:} \hspace{0.3cm} 05 ott. 2025 \hspace{0.3cm} Piazza Sassari \hspace{0.3cm} 07:00\\[0.2cm]
+\textbf{MEZZO DI TRASPORTO:} \hspace{0.3cm} Auto Private
+\vspace{0.2cm}
+\end{minipage}%
+}
 
 \vspace{0.5cm}
 
-% Tabella PROGRAMMA - SEMPLIFICATA
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{10cm}|}
+% Tabella PROGRAMMA
+\noindent
+\begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-2\arrayrulewidth\relax}|}
 \hline
-\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} Escursione ai Monti Simbruini} \\
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} \hspace{0.3cm} Gole di Celano} \\
 \hline
-\textbf{Descrizione:} & Escursione panoramica con vista sulla valle \\
-\hline
-\textbf{Dislivello Totale:} & 500m \\
-\hline
-\textbf{Distanza Totale:} & 12 km \\
-\hline
-\textbf{Difficoltà:} & Media \\
-\hline
-\end{tabular}
-\end{table}
+\textbf{Descrizione:} & 
+Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero.
 
-% Tabella ACCOMPAGNATORI - SEMPLIFICATA
-\begin{table}[H]
-\centering
-\begin{tabular}{|>{\columncolor{celeste}}p{4cm}|p{10cm}|}
+Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario. \\
 \hline
-\textbf{Accompagnatori:} & \cellcolor{arancione}Mario Rossi \\ 
+\textbf{Dislivello Totale:} & $\sim$ 700 m (Andata) 700 m (Ritorno) \\
 \hline
- & Luigi Bianchi \\ 
+\textbf{Distanza Totale:} & $\sim$ 12 km \\
+\hline
+\textbf{Difficoltà:} & EE \\
 \hline
 \end{tabular}
-\end{table}
 
 \vspace{0.5cm}
 
-% Blocco finale
+% Tabella ACCOMPAGNATORI
 \noindent
-\colorbox{celeste}{\textbf{PORTARE:}} 
-\href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + scarponi, giacca impermeabile % {{mat}}
+\begin{tabular}{|>{\columncolor{celeste}}p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+\multirow{2}{*}{\textbf{Accompagnatori:}} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
+\cline{2-2}
+ & Arturo Valli (ASE); Angelo Serrecchia (Dde) \\ 
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+% Sezioni finali
+\noindent
+\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
 
 \vspace{0.3cm}
 
 \noindent
-\colorbox{celeste}{\textbf{COSTO:}} 15 euro da pagare il giorno dell'escursione
+\textbf{COSTO:} 5 euro da pagare direttamente il giorno dell'escursione
 
 \vspace{0.3cm}
 
 \noindent
-\colorbox{celeste}{\textbf{ISCRIZIONE:}} 
-Necessario essere soci CAI juniores o aver pagato l'assicurazione giornaliera.
+\textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
 
 \noindent
-Iscrizione via \href{https://forms.google.com/example}{\textbf{\textcolor{blue}{form}}} 
-dal \safeFormatISO{2024-03-01} alle 10:00 al \safeFormatISO{2024-03-10} alle 18:00.
+Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textbf{\textcolor{blue}{form}}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
 
 \end{document}
