@@ -5,7 +5,10 @@
 \usepackage{geometry}
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{tikz}
+
+% Configurazione hyperref per link blu sottolineati
+\usepackage[colorlinks=false, pdfborder={0 0 1}, urlbordercolor=blue]{hyperref}
 
 % Definizione colori
 \definecolor{celeste}{HTML}{AEC6CF}
@@ -20,12 +23,26 @@
   bottom=1cm
 }
 
+% Parametro per dimensione logo (modificabile)
+\newcommand{\logosize}{2.5cm}
+
 \begin{document}
 \pagestyle{empty}
 
-% Immagine a larghezza piena
+% Immagine a larghezza piena con altezza ridotta
 \noindent
-\includegraphics[width=\textwidth]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
+\begin{tikzpicture}
+  % Immagine delle gole
+  \node[anchor=north west, inner sep=0pt] at (0,0) {
+    \includegraphics[width=\textwidth, height=5.5cm, keepaspectratio=false]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
+  };
+  
+   DECOMMENTARE LE PROSSIME 3 RIGHE PER AGGIUNGERE IL LOGO CAI
+   Logo CAI Juniores sovrapposto in alto a sinistra
+   \node[anchor=north west, inner sep=0pt] at (0.3cm,-0.3cm) {
+     \includegraphics[width=\logosize]{logo_cai_juniores.png}
+   };
+\end{tikzpicture}
 
 \begin{center}
 \Large\textbf{Gole di Celano}\\
@@ -82,7 +99,7 @@
 % Informazioni finali compatte
 \noindent
 {\small
-\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{LISTA BASE}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
+\textbf{PORTARE:} \textbf{\href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{LISTA BASE}}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
 
 \vspace{0.2cm}
 \noindent
@@ -91,7 +108,7 @@
 \vspace{0.2cm}
 \noindent
 \textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
-Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textcolor{blue}{form}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+Iscrizione fino a esaurimento posti: via \textbf{\href{https://forms.google.com/example}{\textcolor{blue}{form}}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
 }
 
 \end{document}
