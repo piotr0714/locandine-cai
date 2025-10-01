@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
@@ -58,11 +58,11 @@
   \node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
     \begin{tikzpicture}
       % Immagine del segnale CAI
-      \node[anchor=center,rotate=-10, inner sep=0pt] at (0,0) {
+      \node[anchor=center, inner sep=0pt] at (0,0) {
         \includegraphics[angle=-10, width=\signsize]{cai_sign.png}
       };
       % Testo sovrapposto al segnale
-      \node[anchor=center] at (0,-0.15cm) {
+      \node[anchor=center,rotate=-10] at (0,-0.15cm) {
         \begin{minipage}{3cm}
           \centering
           \small\textbf{Gole di Celano}\\
