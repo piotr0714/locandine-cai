@@ -5,17 +5,17 @@
 \usepackage{geometry}
 \usepackage[table]{xcolor}
 \usepackage{float}
+\usepackage{graphicx}
 
 % Per link a colori
 \usepackage[colorlinks=true,
             linkcolor=blue,
             urlcolor=blue]{hyperref}
 
-% Pacchetti per logica condizionale
-\usepackage{ifthen}
-
+% Definizione colori
 \definecolor{celeste}{HTML}{AEC6CF}
 \definecolor{arancione}{HTML}{FFD699}
+\definecolor{grigiochiaro}{HTML}{E8E8E8}
 
 \geometry{
   left=2cm,
@@ -24,102 +24,60 @@
   bottom=2cm
 }
 
-% ===================
-%  MACRO PER DATE
-% ===================
-\makeatletter
-\def\myparseISO#1-#2-#3\relax{%
-  \def\anno{#1}%
-  \def\mese{#2}%
-  \def\giorno{#3}%
-}
-
-\newcommand{\formatISO}[1]{%
-  % Prima rimuoviamo spazi e newline
-  \edef\tempdate{#1}%
-  \ifthenelse{\equal{\tempdate}{}}{%
-    % Se vuoto, non fare nulla
-  }{%
-    \expandafter\myparseISO\tempdate\relax
-    \def\myMese{}%
-    \ifthenelse{\equal{\mese}{01}}{\def\myMese{gen.}}{}%
-    \ifthenelse{\equal{\mese}{02}}{\def\myMese{feb.}}{}%
-    \ifthenelse{\equal{\mese}{03}}{\def\myMese{mar.}}{}%
-    \ifthenelse{\equal{\mese}{04}}{\def\myMese{apr.}}{}%
-    \ifthenelse{\equal{\mese}{05}}{\def\myMese{mag.}}{}%
-    \ifthenelse{\equal{\mese}{06}}{\def\myMese{giu.}}{}%
-    \ifthenelse{\equal{\mese}{07}}{\def\myMese{lug.}}{}%
-    \ifthenelse{\equal{\mese}{08}}{\def\myMese{ago.}}{}%
-    \ifthenelse{\equal{\mese}{09}}{\def\myMese{set.}}{}%
-    \ifthenelse{\equal{\mese}{10}}{\def\myMese{ott.}}{}%
-    \ifthenelse{\equal{\mese}{11}}{\def\myMese{nov.}}{}%
-    \ifthenelse{\equal{\mese}{12}}{\def\myMese{dic.}}{}%
-    \giorno\space\myMese\space\anno
-  }%
-}
-
-% Comando wrapper che gestisce meglio i placeholder
-\newcommand{\safeFormatISO}[1]{%
-  \def\temparg{#1}%
-  % Rimuove spazi e controlla se vuoto
-  \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
-    % Vuoto, non fare nulla
-  \else
-    \formatISO{#1}%
-  \fi
-}
-\makeatother
-% ===================
-
 \begin{document}
 \pagestyle{empty}
 
-% Spazio per immagine
+% Spazio per immagine e logo
 \begin{center}
-\vspace{2cm}
-\textit{[Spazio per la locandina]}
-\vspace{2cm}
+\fbox{\parbox{\textwidth}{%
+\vspace{1cm}
+\centering
+\textit{[Logo CAI Juniores]}\\
+\vspace{3cm}
+\Large\textbf{Gole di Celano}\\
+\normalsize 05/10\\
+\vspace{1cm}
+}}
 \end{center}
-
-% APPUNTAMENTO e MEZZO DI TRASPORTO
-\noindent
-\colorbox{celeste}{\textbf{APPUNTAMENTO:}} 
-% Usa valori di default per testing
-\safeFormatISO{2024-03-15} % {{dataVal}}
-Roma Termini % {{luogo}}
-ore 9:00 % {{orario}}
-
-\noindent
-\colorbox{celeste}{\textbf{MEZZO DI TRASPORTO:}} Pullman % {{mezzi}}
 
 \vspace{0.5cm}
 
-% Tabella PROGRAMMA - SEMPLIFICATA
+% APPUNTAMENTO e MEZZO DI TRASPORTO
+\noindent
+\colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+\textbf{APPUNTAMENTO:} 05 ott. 2025 Piazza Sassari 07:00\\
+\textbf{MEZZO DI TRASPORTO:} Auto Private
+}}
+
+\vspace{0.5cm}
+
+% Tabella PROGRAMMA
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{4cm}|p{10cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.5cm}|}
 \hline
-\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} Escursione ai Monti Simbruini} \\
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA: Gole di Celano}} \\
 \hline
-\textbf{Descrizione:} & Escursione panoramica con vista sulla valle \\
+\textbf{Descrizione:} & 
+Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero. Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario. \\
 \hline
-\textbf{Dislivello Totale:} & 500m \\
+\textbf{Dislivello Totale:} & $\sim$ 700 m (Andata) 700 m (Ritorno) \\
 \hline
-\textbf{Distanza Totale:} & 12 km \\
+\textbf{Distanza Totale:} & $\sim$ 12 km \\
 \hline
-\textbf{Difficoltà:} & Media \\
+\textbf{Difficoltà:} & EE \\
 \hline
 \end{tabular}
 \end{table}
 
-% Tabella ACCOMPAGNATORI - SEMPLIFICATA
+% Tabella ACCOMPAGNATORI semplificata
 \begin{table}[H]
 \centering
-\begin{tabular}{|>{\columncolor{celeste}}p{4cm}|p{10cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.5cm}|}
 \hline
-\textbf{Accompagnatori:} & \cellcolor{arancione}Mario Rossi \\ 
+\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
 \hline
- & Luigi Bianchi \\ 
+ & Arturo Valli (ASE); Angelo Serrecchia (Dde) \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -128,22 +86,19 @@ ore 9:00 % {{orario}}
 
 % Blocco finale
 \noindent
-\colorbox{celeste}{\textbf{PORTARE:}} 
-\href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + scarponi, giacca impermeabile % {{mat}}
+\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
 
 \vspace{0.3cm}
 
 \noindent
-\colorbox{celeste}{\textbf{COSTO:}} 15 euro da pagare il giorno dell'escursione
+\textbf{COSTO:} 5 euro da pagare direttamente il giorno dell'escursione
 
 \vspace{0.3cm}
 
 \noindent
-\colorbox{celeste}{\textbf{ISCRIZIONE:}} 
-Necessario essere soci CAI juniores o aver pagato l'assicurazione giornaliera.
+\textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
 
 \noindent
-Iscrizione via \href{https://forms.google.com/example}{\textbf{\textcolor{blue}{form}}} 
-dal \safeFormatISO{2024-03-01} alle 10:00 al \safeFormatISO{2024-03-10} alle 18:00.
+Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textbf{\textcolor{blue}{form}}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
 
 \end{document}
