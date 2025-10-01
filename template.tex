@@ -6,73 +6,52 @@
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{tabularx}
-\usepackage{array}
 
 % Definizione colori
 \definecolor{celeste}{HTML}{AEC6CF}
 \definecolor{arancione}{HTML}{FFD699}
 \definecolor{grigiochiaro}{HTML}{E8E8E8}
-\definecolor{verdeacqua}{HTML}{B8D4D4}
 
 % Margini ridotti per massimizzare lo spazio
 \geometry{
   left=1.5cm,
   right=1.5cm,
-  top=1.5cm,
-  bottom=1.5cm
+  top=1cm,
+  bottom=1cm
 }
 
 \begin{document}
 \pagestyle{empty}
 
-% Header con logo e immagine
-\noindent
-\begin{minipage}[t]{0.15\textwidth}
-\includegraphics[width=\textwidth]{logo_cai_juniores.png}
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.84\textwidth}
-\includegraphics[width=\textwidth,height=6cm,keepaspectratio]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
-\end{minipage}
+% Immagine senza cornice
+\begin{center}
+\includegraphics[width=0.8\textwidth]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}\\
+\vspace{0.2cm}
+\Large\textbf{Gole di Celano}\\
+\normalsize\textit{05/10}
+\end{center}
 
-% Cartellino in alto a destra sull'immagine
-\vspace{-2cm}
-\hfill
-\begin{minipage}{3.5cm}
-\colorbox{white}{%
-\begin{minipage}{3.3cm}
-\raggedleft
-\includegraphics[width=1.2cm]{cai_sign.png}\\
-\vspace{0.1cm}
-{\small Gole di Celano}\\
-\vspace{0.1cm}
-\colorbox{red}{\textcolor{white}{\textbf{\large 05/10}}}
-\end{minipage}
-}
-\end{minipage}
+\vspace{0.3cm}
 
-\vspace{0.5cm}
-
-% APPUNTAMENTO e MEZZO DI TRASPORTO
+% APPUNTAMENTO e MEZZO DI TRASPORTO compatti
 \noindent
 \colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-\textbf{APPUNTAMENTO:} 05 ott. 2025 Piazza Sassari 07:00\\
+\small
+\textbf{APPUNTAMENTO:} 05 ott. 2025 Piazza Sassari 07:00 \quad
 \textbf{MEZZO DI TRASPORTO:} Auto Private
 }}
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
-% Tabella PROGRAMMA
+% Tabella PROGRAMMA compatta
 \noindent
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+{\small
+\begin{tabular}{|p{2.8cm}|p{11.7cm}|}
 \hline
-\rowcolor{verdeacqua}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} Gole di Celano} \\
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA: Gole di Celano}} \\
 \hline
 \textbf{Descrizione:} & 
-Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero.
-
-Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario. \\
+{\footnotesize Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero. Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario.} \\
 \hline
 \textbf{Dislivello Totale:} & $\sim$ 700 m (Andata) 700 m (Ritorno) \\
 \hline
@@ -80,41 +59,38 @@ Gli accompagnatori si riservano la facoltà di modificare il percorso ove necess
 \hline
 \textbf{Difficoltà:} & EE \\
 \hline
-\end{tabularx}
+\end{tabular}
+}
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
-% Tabella ACCOMPAGNATORI
+% Tabella ACCOMPAGNATORI compatta
 \noindent
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+{\small
+\begin{tabular}{|p{2.8cm}|p{11.7cm}|}
 \hline
-\rowcolor{verdeaqua}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
+\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
 \hline
  & Arturo Valli (ASE); Angelo Serrecchia (Dde) \\ 
 \hline
-\end{tabularx}
-
-\vspace{0.4cm}
-
-% Informazioni finali
-\noindent
-\colorbox{verdeaqua}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-\textbf{PORTARE:}
-}} \href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{\textbf{LISTA BASE}}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
+\end{tabular}
+}
 
 \vspace{0.3cm}
-\noindent
-\colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-\textbf{COSTO:}
-}} 5 euro da pagare direttamente il giorno dell'escursione
 
-\vspace{0.3cm}
+% Informazioni finali compatte
 \noindent
-\colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-\textbf{ISCRIZIONE:}
-}} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
+{\small
+\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{LISTA BASE}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
 
+\vspace{0.2cm}
 \noindent
-Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textcolor{blue}{\textbf{form}}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+\textbf{COSTO:} 5 euro da pagare direttamente il giorno dell'escursione
+
+\vspace{0.2cm}
+\noindent
+\textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
+Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textcolor{blue}{form}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+}
 
 \end{document}
