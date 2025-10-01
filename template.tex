@@ -3,50 +3,40 @@
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
-\usepackage{graphicx}
 \usepackage[table]{xcolor}
-\usepackage{lmodern}
 \usepackage{float}
 
-% Per link a colori, sottolineati, ecc.
+% Per link a colori
 \usepackage[colorlinks=true,
             linkcolor=blue,
-            urlcolor=blue,
-            citecolor=blue]{hyperref}
+            urlcolor=blue]{hyperref}
 
-% Pacchetti utili per logica condizionale
+% Pacchetti per logica condizionale
 \usepackage{ifthen}
 
 \definecolor{celeste}{HTML}{AEC6CF}
 \definecolor{arancione}{HTML}{FFD699}
-\definecolor{rowgray}{gray}{0.9}
 
 \geometry{
-  left=1.5cm,
-  right=1.5cm,
-  top=1.5cm,
-  bottom=1.5cm,
-  paperwidth=21cm,
-  paperheight=29.7cm
+  left=2cm,
+  right=2cm,
+  top=2cm,
+  bottom=2cm
 }
 
 % ===================
-%  MACRO PER FORMATTARE LE DATE (ISO -> italiano)
+%  MACRO PER DATE
 % ===================
 \makeatletter
-% \myparseISO "spacchetta" la stringa YYYY-MM-DD in \anno, \mese, \giorno
 \def\myparseISO#1-#2-#3\relax{%
   \def\anno{#1}%
   \def\mese{#2}%
   \def\giorno{#3}%
 }
 
-% \formatISO{YYYY-MM-DD} -> "DD mmm. YYYY"
 \newcommand{\formatISO}[1]{%
-  % Se la stringa è vuota, non stampare nulla
   \ifthenelse{\equal{#1}{}}{}{%
     \expandafter\myparseISO#1\relax
-    % Mappa mese numerico -> abbreviazione italiana
     \def\myMese{}%
     \ifthenelse{\equal{\mese}{01}}{\def\myMese{gen.}}{}%
     \ifthenelse{\equal{\mese}{02}}{\def\myMese{feb.}}{}%
@@ -67,34 +57,30 @@
 % ===================
 
 \begin{document}
-\pagestyle{empty}  % Rimuove la numerazione di pagina
+\pagestyle{empty}
 
-% 1) Immagine principale - COMMENTATA perché manca il file immagine
-% Per inserire un'immagine vera, usa:
-% \begin{center}
-%   \includegraphics[width=0.9\textwidth]{nome_file_immagine.jpg}
-% \end{center}
-
+% Spazio per immagine
 \begin{center}
-\textit{[Qui andrà la locandina]}
+\vspace{2cm}
+\textit{[Spazio per la locandina]}
+\vspace{2cm}
 \end{center}
 
-% 2) Blocco APPUNTAMENTO / MEZZO DI TRASPORTO
-\begin{center}
-\begin{minipage}{0.9\textwidth}
-\raggedright
-\colorbox{celeste}{\textbf{\uppercase{APPUNTAMENTO:}}} ~ \formatISO{{{dataVal}}} \, {{luogo}} \, {{orario}} \\
-\colorbox{celeste}{\textbf{\uppercase{MEZZO DI TRASPORTO:}}} ~ {{mezzi}}
-\end{minipage}
-\end{center}
+% APPUNTAMENTO e MEZZO DI TRASPORTO
+\noindent
+\colorbox{celeste}{\textbf{APPUNTAMENTO:}} \formatISO{{{dataVal}}} {{luogo}} {{orario}}
 
-% 3) Tabella PROGRAMMA
+\noindent
+\colorbox{celeste}{\textbf{MEZZO DI TRASPORTO:}} {{mezzi}}
+
+\vspace{0.5cm}
+
+% Tabella PROGRAMMA - SEMPLIFICATA
 \begin{table}[H]
 \centering
-\resizebox{0.9\textwidth}{!}{%
-\begin{tabular}{|p{4.5cm}|p{11cm}|}
+\begin{tabular}{|p{4cm}|p{10cm}|}
 \hline
-\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{\uppercase{PROGRAMMA:}} \quad {{titolo}}} \\
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA:} {{titolo}}} \\
 \hline
 \textbf{Descrizione:} & {{descr}} \\
 \hline
@@ -105,35 +91,40 @@
 \textbf{Difficoltà:} & {{difficolta}} \\
 \hline
 \end{tabular}
-}
 \end{table}
 
-% 4) Tabella ACCOMPAGNATORI
+% Tabella ACCOMPAGNATORI - SEMPLIFICATA
 \begin{table}[H]
 \centering
-\resizebox{0.9\textwidth}{!}{%
-\begin{tabular}{|>{\columncolor{celeste}}p{4.5cm}|p{11cm}|}
+\begin{tabular}{|>{\columncolor{celeste}}p{4cm}|p{10cm}|}
 \hline
-\textbf{Accompagnatori:} & \cellcolor{arancione}{{a1}} \\ \hline
- & {{others}} \\ \hline
+\textbf{Accompagnatori:} & \cellcolor{arancione}{{a1}} \\ 
+\hline
+ & {{others}} \\ 
+\hline
 \end{tabular}
-}
 \end{table}
 
-% 5) Blocco finale (PORTARE / COSTO / ISCRIZIONE)
-\begin{center}
-\begin{minipage}{0.9\textwidth}
-\raggedright
-\colorbox{celeste}{\textbf{\uppercase{PORTARE:}}} ~
-\href{https://www.cairoma.it/?page_id=22206#:~:text=LISTA%20BASE%3A,e%C2%A0un%20pasto}{\textbf{\underline{\textcolor{blue}{LISTA BASE}}}}%
-\ + {{mat}} \\
-\colorbox{celeste}{\textbf{\uppercase{COSTO:}}} ~ {{quota}}\euro \,da pagare direttamente il giorno dell'escursione \\
-\colorbox{celeste}{\textbf{\uppercase{ISCRIZIONE:}}} ~
-È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.\\
-Iscrizione fino a esaurimento posti: via
-\href{{{formLink}}}{\textbf{\textcolor{blue}{\underline{form}}}}
+\vspace{0.5cm}
+
+% Blocco finale
+\noindent
+\colorbox{celeste}{\textbf{PORTARE:}} 
+\href{https://www.cairoma.it/?page_id=22206}{\textbf{\textcolor{blue}{LISTA BASE}}} + {{mat}}
+
+\vspace{0.3cm}
+
+\noindent
+\colorbox{celeste}{\textbf{COSTO:}} {{quota}} euro da pagare il giorno dell'escursione
+
+\vspace{0.3cm}
+
+\noindent
+\colorbox{celeste}{\textbf{ISCRIZIONE:}} 
+Necessario essere soci CAI juniores o aver pagato l'assicurazione giornaliera.
+
+\noindent
+Iscrizione via \href{{{formLink}}}{\textbf{\textcolor{blue}{form}}} 
 dall'\formatISO{{{dataIni}}} alle {{oraIni}} al \formatISO{{{dataFin}}} alle {{oraFin}}.
-\end{minipage}
-\end{center}
 
 \end{document}
