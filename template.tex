@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
@@ -6,91 +6,146 @@
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{titlesec}
 
-% Definizione colori
-\definecolor{celeste}{HTML}{AEC6CF}
-\definecolor{arancione}{HTML}{FFD699}
-\definecolor{grigiochiaro}{HTML}{E8E8E8}
+% --- Margini compatti per stare in una pagina ---
+\geometry{top=1.2cm,bottom=1.2cm,left=1.4cm,right=1.4cm}
 
-% Margini ridotti per massimizzare lo spazio
-\geometry{
-  left=1.5cm,
-  right=1.5cm,
-  top=1cm,
-  bottom=1cm
-}
+% --- Colori semplici e comuni ---
+\definecolor{celeste}{HTML}{E6F2FA}
+\definecolor{arancione}{HTML}{FFE4C2}
+\definecolor{grigio}{HTML}{F3F3F3}
+\definecolor{titolo}{HTML}{1A1A1A}
+\definecolor{accento}{HTML}{0B6EA8}
+
+% --- Stile titoli più compatto ---
+\titleformat{\section}{\large\bfseries\color{accento}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+
+% --- Link discreti ---
+\hypersetup{colorlinks=true,linkcolor=accento,urlcolor=accento}
+
+% --- Celle verticalmente centrate in tabularx ---
+\renewcommand\arraystretch{1.25}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
 
 \begin{document}
 \pagestyle{empty}
 
-% Immagine senza cornice
-\begin{center}
-\includegraphics[width=0.8\textwidth]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}\\
-\vspace{0.2cm}
-\Large\textbf{Gole di Celano}\\
-\normalsize\textit{05/10}
-\end{center}
-
-\vspace{0.3cm}
-
-% APPUNTAMENTO e MEZZO DI TRASPORTO compatti
+% ===== TESTATA =====
 \noindent
-\colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-\small
-\textbf{APPUNTAMENTO:} 05 ott. 2025 Piazza Sassari 07:00 \quad
-\textbf{MEZZO DI TRASPORTO:} Auto Private
-}}
+\begin{minipage}[t]{0.68\linewidth}
+    {\Large\bfseries\color{titolo} Gole di Celano}\\[-2pt]
+    {\normalsize Domenica 5 ottobre 2025}\\[2pt]
+    {\small Sezione CAI Roma — Sottosezione Juniores}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.30\linewidth}
+    \raggedleft
+    % \includegraphics[height=1.4cm]{logo-cai.png} % opzionale
+    \vspace{6pt}
+    {\small Ritrovo: \textbf{Celano (AQ)}}\\
+    {\small Orario: \textbf{07:30}}\\
+    {\small Numero posti: \textbf{30}}
+\end{minipage}
 
-\vspace{0.3cm}
+\vspace{6pt}
+\noindent\colorbox{celeste}{\parbox{\linewidth}{\vspace{4pt}\centering\bfseries Programma escursione: Gole di Celano\vspace{4pt}}}
 
-% Tabella PROGRAMMA compatta
+% ===== DUE COLONNE PRINCIPALI =====
+\vspace{6pt}
 \noindent
-{\small
-\begin{tabular}{|p{2.8cm}|p{11.7cm}|}
-\hline
-\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA: Gole di Celano}} \\
-\hline
-\textbf{Descrizione:} & 
-{\footnotesize Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero. Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario.} \\
-\hline
-\textbf{Dislivello Totale:} & $\sim$ 700 m (Andata) 700 m (Ritorno) \\
-\hline
-\textbf{Distanza Totale:} & $\sim$ 12 km \\
-\hline
-\textbf{Difficoltà:} & EE \\
-\hline
-\end{tabular}
-}
+\begin{minipage}[t]{0.60\linewidth}
+    \setlength{\fboxsep}{6pt}
+    \colorbox{grigio}{\parbox{\linewidth}{\small
+        \textbf{Descrizione} — Partenza da Celano, imbocco del canyon e risalita fino al tratto più scenografico. Pausa pranzo e rientro per lo stesso itinerario. Gli accompagnatori si riservano la facoltà di modificare il percorso in base alle condizioni meteo e del gruppo.
+    }}
 
-\vspace{0.3cm}
+    \vspace{6pt}
+    {\small
+    \begin{tabularx}{\linewidth}{|L{3.2cm}|Y|}
+        \hline
+        \rowcolor{celeste}\textbf{Dati tecnici} & \\
+        \hline
+        \textbf{Dislivello} & \~{}700 m (andata) \\
+        \hline
+        \textbf{Lunghezza} & \~{}9 km A/R \\
+        \hline
+        \textbf{Durata} & 6–7 ore complessive \\
+        \hline
+        \textbf{Difficoltà} & E (Escursionistico) \\
+        \hline
+        \textbf{Quota max} & 1.250 m s.l.m. circa \\
+        \hline
+    \end{tabularx}}
 
-% Tabella ACCOMPAGNATORI compatta
-\noindent
-{\small
-\begin{tabular}{|p{2.8cm}|p{11.7cm}|}
-\hline
-\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
-\hline
- & Arturo Valli (ASE); Angelo Serrecchia (Dde) \\ 
-\hline
-\end{tabular}
-}
+    \vspace{6pt}
+    {\small
+    \begin{tabularx}{\linewidth}{|L{3.2cm}|Y|}
+        \hline
+        \rowcolor{celeste}\textbf{Logistica} & \\
+        \hline
+        \textbf{Ritrovo} & Celano (AQ), parcheggio presso imbocco gole, ore 07:30 \\
+        \hline
+        \textbf{Trasporti} & Car pooling. Spese viaggio a carico dei partecipanti. \\
+        \hline
+        \textbf{Pasti} & Pranzo al sacco; acqua consigliata \,$\ge$\, 1,5 L. \\
+        \hline
+    \end{tabularx}}
 
-\vspace{0.3cm}
+    \vspace{6pt}
+    {\small
+    \begin{tabularx}{\linewidth}{|L{3.2cm}|Y|}
+        \hline
+        \rowcolor{celeste}\textbf{Dotazione} & \\
+        \hline
+        \textbf{Obbligatoria} & Scarponi alti, abbigliamento a strati, guscio/antipioggia, frontale, kit pronto soccorso personale. \\
+        \hline
+        \textbf{Consigliata} & Bastoncini, guanti, pile leggero, snack energetici. \\
+        \hline
+    \end{tabularx}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\linewidth}
+    \setlength{\fboxsep}{6pt}
+    \colorbox{arancione}{\parbox{\linewidth}{\small
+        \textbf{Iscrizione} — Soci CAI juniores in regola con il tesseramento 2025 o assicurazione giornaliera. Posti limitati. \textbf{Iscrizioni}: modulo online dal 30/09 ore 20:00 al 03/10 ore 14:00.\\[4pt]
+        \textbf{Quota}\,: \euro{}5 (cassa il giorno dell'uscita).
+    }}
 
-% Informazioni finali compatte
-\noindent
-{\small
-\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{LISTA BASE}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
+    \vspace{6pt}
+    \colorbox{grigio}{\parbox{\linewidth}{\small
+        \textbf{Note}\,: percorso in forra con sassi instabili e tratti umidi; evitare se si soffre di vertigini o instabilità della caviglia. Giornata \emph{intera}. Meteo variabile in gola.
+    }}
 
-\vspace{0.2cm}
-\noindent
-\textbf{COSTO:} 5 euro da pagare direttamente il giorno dell'escursione
+    \vspace{6pt}
+    \colorbox{grigio}{\parbox{\linewidth}{\small
+        \textbf{Accompagnatori}\,: Nome Cognome (AE), Nome Cognome (AE).\\[2pt]
+        \textbf{Contatti}\,: sezione@cairoma.it — \href{https://www.cairoma.it}{www.cairoma.it}
+    }}
 
-\vspace{0.2cm}
-\noindent
-\textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
-Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textcolor{blue}{form}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+    \vspace{6pt}
+    \noindent\fbox{\parbox{\linewidth}{\small
+        \textbf{Portare}\,: abbigliamento tecnico stagionale; \emph{no} scarpe basse. Ricambio da lasciare in auto.
+    }}
+
+    \vspace{6pt}
+    % Immagine opzionale (se presente la inserisce, altrimenti compila lo stesso)
+    \begin{center}
+        % \includegraphics[width=\linewidth]{gole-di-celano.jpg}
+        {\footnotesize (Foto rappresentativa dell'itinerario)}
+    \end{center}
+\end{minipage}
+
+% ===== AVVERTENZA LEGALE SINTETICA =====
+\vspace{6pt}
+{\footnotesize\noindent
+\textit{L'escursione è attività sociale CAI. Gli accompagnatori possono variare programma e tempi in base a sicurezza e meteo. I partecipanti dichiarano idoneità fisica e attrezzatura adeguata.}
 }
 
 \end{document}
