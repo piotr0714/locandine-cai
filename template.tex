@@ -7,8 +7,12 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 
-% Configurazione hyperref per link blu sottolineati
-\usepackage[colorlinks=false, pdfborder={0 0 1}, urlbordercolor=blue]{hyperref}
+% Configurazione hyperref per link blu sottolineati senza riquadro
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{ulem} % per sottolineature
+
+% Comando per avere i link blu e sottolineati
+\renewcommand\UrlFont{\color{blue}\uline}
 
 % Definizione colori
 \definecolor{celeste}{HTML}{AEC6CF}
@@ -25,6 +29,7 @@
 
 % Parametro per dimensione logo (modificabile)
 \newcommand{\logosize}{2.5cm}
+\newcommand{\signsize}{4cm}
 
 \begin{document}
 \pagestyle{empty}
@@ -34,22 +39,35 @@
 \begin{tikzpicture}
   % Immagine delle gole
   \node[anchor=north west, inner sep=0pt] at (0,0) {
-    \includegraphics[width=\textwidth, height=8cm, keepaspectratio=false]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
+    \includegraphics[width=\textwidth, height=6cm, keepaspectratio=false]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
   };
   
-   DECOMMENTARE LE PROSSIME 3 RIGHE PER AGGIUNGERE IL LOGO CAI
-   Logo CAI Juniores sovrapposto in alto a sinistra
-   \node[anchor=north west, inner sep=0pt] at (0.3cm,-0.3cm) {
-     \includegraphics[width=\logosize]{logo_cai_juniores.png}
-   };
+  % DECOMMENTARE LE PROSSIME 3 RIGHE PER AGGIUNGERE IL LOGO CAI
+  % Logo CAI Juniores sovrapposto in alto a sinistra
+  % \node[anchor=north west, inner sep=0pt] at (0.3cm,-0.3cm) {
+  %   \includegraphics[width=\logosize]{logo_cai_juniores.png}
+  % };
+  
+  % Segnale CAI in basso a destra con titolo e data
+  \node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
+    \begin{tikzpicture}
+      % Immagine del segnale CAI
+      \node[anchor=center, inner sep=0pt] at (0,0) {
+        \includegraphics[width=\signsize]{cai_sign.png}
+      };
+      % Testo sovrapposto al segnale
+      \node[anchor=center] at (0,0.2cm) {
+        \begin{minipage}{3cm}
+          \centering
+          \small\textbf{Gole di Celano}\\
+          \footnotesize\textbf{05/10}
+        \end{minipage}
+      };
+    \end{tikzpicture}
+  };
 \end{tikzpicture}
 
-\begin{center}
-\Large\textbf{Gole di Celano}\\
-\normalsize\textit{05/10}
-\end{center}
-
-\vspace{0.3cm}
+\vspace{0.5cm}
 
 % APPUNTAMENTO e MEZZO DI TRASPORTO su due righe
 \noindent
@@ -61,10 +79,10 @@
 
 \vspace{0.3cm}
 
-% Tabella PROGRAMMA a larghezza piena
+% Tabella PROGRAMMA a larghezza piena - prima colonna allargata
 \noindent
 {\small
-\begin{tabular}{|p{2.8cm}|p{\dimexpr\textwidth-2.8cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+\begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-3\arrayrulewidth\relax}|}
 \hline
 \rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA: Gole di Celano}} \\
 \hline
@@ -82,10 +100,10 @@
 
 \vspace{0.3cm}
 
-% Tabella ACCOMPAGNATORI a larghezza piena
+% Tabella ACCOMPAGNATORI a larghezza piena - prima colonna allargata
 \noindent
 {\small
-\begin{tabular}{|p{2.8cm}|p{\dimexpr\textwidth-2.8cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+\begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-3\arrayrulewidth\relax}|}
 \hline
 \rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
 \hline
@@ -99,7 +117,7 @@
 % Informazioni finali compatte
 \noindent
 {\small
-\textbf{PORTARE:} \textbf{\href{https://www.cairoma.it/?page_id=22206}{\textcolor{blue}{LISTA BASE}}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
+\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textbf{LISTA BASE}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
 
 \vspace{0.2cm}
 \noindent
@@ -108,7 +126,7 @@
 \vspace{0.2cm}
 \noindent
 \textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
-Iscrizione fino a esaurimento posti: via \textbf{\href{https://forms.google.com/example}{\textcolor{blue}{form}}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textbf{form}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
 }
 
 \end{document}
