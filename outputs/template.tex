@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[export]{adjustbox}
+
+
+% Configurazione hyperref per link blu sottolineati senza riquadro
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{ulem} % per sottolineature
+
+% Comando per avere i link blu e sottolineati
+\renewcommand\UrlFont{\color{blue}\uline}
+
+% Definizione colori
+\definecolor{celeste}{HTML}{AEC6CF}
+\definecolor{arancione}{HTML}{FFD699}
+\definecolor{grigiochiaro}{HTML}{E8E8E8}
+
+% Margini ridotti per massimizzare lo spazio
+\geometry{
+  left=1.5cm,
+  right=1.5cm,
+  top=1cm,
+  bottom=1cm
+}
+
+% Parametro per dimensione logo (modificabile)
+\newcommand{\logosize}{2.5cm}
+\newcommand{\signsize}{4cm}
+
+\begin{document}
+\pagestyle{empty}
+
+% Immagine a larghezza piena con altezza ridotta
+\noindent
+\begin{tikzpicture}
+  % Immagine delle gole
+  \node[anchor=north west, inner sep=0pt] at (0,0) {
+
+
+  \includegraphics[width=\textwidth, height=8cm, clip]{gole-di-aielli-celano-foto-di-Elena-Grigioni-c.jpg}
+
+    
+    };
+  
+  % DECOMMENTARE LE PROSSIME 3 RIGHE PER AGGIUNGERE IL LOGO CAI
+  % Logo CAI Juniores sovrapposto in alto a sinistra
+   \node[anchor=north west, inner sep=0pt] at (0.3cm,-0.3cm) {
+     \includegraphics[width=\logosize]{logo_cai_juniores.png}
+   };
+  
+  % Segnale CAI in basso a destra con titolo e data
+  \node[anchor=south east, inner sep=0pt] at (\textwidth-0.3cm,-5.7cm) {
+    \begin{tikzpicture}
+      % Immagine del segnale CAI
+      \node[anchor=center, inner sep=0pt] at (0,0) {
+        \includegraphics[angle=-10, width=\signsize]{cai_sign.png}
+      };
+      % Testo sovrapposto al segnale
+      \node[anchor=center,rotate=-10] at (0,-0.15cm) {
+        \begin{minipage}{3cm}
+          \centering
+          \small\textbf{Gole di Celano}\\
+          \footnotesize\textbf{05/10}
+        \end{minipage}
+      };
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+  
+\vspace{0.5cm}
+
+% APPUNTAMENTO e MEZZO DI TRASPORTO su due righe
+\noindent
+\colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+\small
+\textbf{APPUNTAMENTO:} 05 ott. 2025 Piazza Sassari 07:00\\
+\textbf{MEZZO DI TRASPORTO:} Auto Private
+}}
+
+\vspace{0.3cm}
+
+% Tabella PROGRAMMA a larghezza piena - prima colonna allargata
+\noindent
+{\small
+\begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+\hline
+\rowcolor{celeste}\multicolumn{2}{|l|}{\textbf{PROGRAMMA: Gole di Celano}} \\
+\hline
+\textbf{Descrizione:} & 
+{\footnotesize Partenza da Celano, nei pressi dell'imbocco del canyon, percorreremo il sentiero CAI n.12 che si inoltra tra le alte pareti calcaree delle gole, camminando accanto al torrente La Foce. Lungo il cammino attraverseremo strettoie spettacolari e tratti ombreggiati da boschi di carpino e faggio. Faremo soste nei punti più suggestivi, come la pittoresca Cascata degli Innamorati, nascosta tra le rocce e resa magica dallo scroscio dell'acqua e infine l'eremo di San Marco alla Foce. Proseguendo il percorso, raggiungeremo la splendida Valle d'Arano, con i suo ampi spazi erbosi e il panorama sull'Altopiano delle Rocche. Il rientro avverrà per lo stesso sentiero. Gli accompagnatori si riservano la facoltà di modificare il percorso ove necessario.} \\
+\hline
+\textbf{Dislivello Totale:} & $\sim$ 700 m (Andata) 700 m (Ritorno) \\
+\hline
+\textbf{Distanza Totale:} & $\sim$ 12 km \\
+\hline
+\textbf{Difficoltà:} & EE \\
+\hline
+\end{tabular}
+}
+
+\vspace{0.3cm}
+
+% Tabella ACCOMPAGNATORI a larghezza piena - prima colonna allargata
+\noindent
+{\small
+\begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+\hline
+\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}Luigi Cecili (aDde) 3755993958 \\ 
+\hline
+ & Arturo Valli (ASE); Angelo Serrecchia (Dde) \\ 
+\hline
+\end{tabular}
+}
+
+\vspace{0.3cm}
+
+% Informazioni finali compatte
+\noindent
+{\small
+\textbf{PORTARE:} \href{https://www.cairoma.it/?page_id=22206}{\textbf{LISTA BASE}} + Casco Omologato (Obbligatorio) da Alpinismo o Ferrata o Speleo, un cambio completo da lasciare in macchina.
+
+\vspace{0.2cm}
+\noindent
+\textbf{COSTO:} 5 euro da pagare direttamente il giorno dell'escursione
+
+\vspace{0.2cm}
+\noindent
+\textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
+Iscrizione fino a esaurimento posti: via \href{https://forms.google.com/example}{\textbf{form}} dall'30 set. 2025 alle 20:00 al 03 ott. 2025 alle 14:00.
+}
+
+\end{document}
