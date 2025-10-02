@@ -66,7 +66,7 @@
         \begin{minipage}{3cm}
           \centering
           \small\textbf{{{TITOLO}}}\\
-          \footnotesize\textbf{{{DATA_BREVE}}}
+          \footnotesize\textbf{{{DATACORTA}}}
         \end{minipage}
       };
     \end{tikzpicture}
@@ -79,7 +79,7 @@
 \noindent
 \colorbox{grigiochiaro}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
 \small
-\textbf{APPUNTAMENTO:} {{DATA_COMPLETA}} {{LUOGO}} {{ORA}}\\
+\textbf{APPUNTAMENTO:} {{DATACOMPLETA}} {{LUOGO}} {{ORA}}\\
 \textbf{MEZZO DI TRASPORTO:} {{MEZZI}}
 }}
 
@@ -111,9 +111,9 @@
 {\small
 \begin{tabular}{|p{3.5cm}|p{\dimexpr\textwidth-3.5cm-4\tabcolsep-3\arrayrulewidth\relax}|}
 \hline
-\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}{{ACC1}} \\ 
+\rowcolor{celeste}\textbf{Accompagnatori:} & \cellcolor{arancione}{{{ACC1}}} \\ 
 \hline
- & {{ACCOMPAGNATORI_OTHERS}} \\ 
+ & {{ACCOMPAGNATORIALTRI}} \\ 
 \hline
 \end{tabular}
 }
@@ -132,7 +132,7 @@
 \vspace{0.2cm}
 \noindent
 \textbf{ISCRIZIONE:} È necessario essere soci CAI juniores regolarmente iscritti per l'anno in corso o aver pagato l'assicurazione giornaliera.
-Iscrizione fino a esaurimento posti: via \href{{{LINK_ISCRIZIONE}}}{\textbf{form}} dall'{{DATA_INIZIO}} alle {{ORA_INIZIO}} al {{DATA_FINE}} alle {{ORA_FINE}}.
+Iscrizione fino a esaurimento posti: via \href{{{LINKISCRIZIONE}}}{\textbf{form}} dall'{{DATAINIZIO}} alle {{ORAINIZIO}} al {{DATAFINE}} alle {{ORAFINE}}.
 }
 
 \end{document}
